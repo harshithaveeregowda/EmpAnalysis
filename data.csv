@@ -1,0 +1,8 @@
+name,grade,age,time_employed,party_hometown_on_sun,bridge_days_on_tue,amount,education_hours_per_year,total_sick_days_per_year,years_in_department,city_type,homeoffice_days_per_week,fte,year,sick_on_mon_more_six
+Person_0,Senior,20,28,no,no,2684,21,17,5,city,3,1,2024,no
+Person_1,Director,48,20,no,no,4950,20,28,4,suburb,2,0.5,2024,yes
+Person_2,Senior,57,47,no,no,4550,25,21,5,suburb,4,0.5,2024,no
+Person_3,Senior,54,7,no,no,5792,39,17,6,suburb,3,1,2024,no
+Person_4,Director,53,11,no,no,3471,20,13,6,suburb,3,1,2024,no
+Person_5,Director,41,20,no,no,4941,24,29,8,city,3,1,2024,no
+Person_6,Senior,48,16,no,no,3599,40,23,7,suburb,3,0.5,2024,no
