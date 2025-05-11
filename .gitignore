@@ -1,0 +1,6 @@
+app*.py
+data.csv
+model.py
+utils.py
+.venv
+__pycache__/
