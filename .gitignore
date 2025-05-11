@@ -4,3 +4,4 @@ model.py
 utils.py
 .venv
 __pycache__/
+.idea
