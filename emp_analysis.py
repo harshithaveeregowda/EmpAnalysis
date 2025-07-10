@@ -108,10 +108,10 @@ if uploaded_file:
     # Show average profile per cluster
     cluster_summary = original_df.groupby('Cluster')[['age', 'amount', 'Risk Score (0-1)']].mean()
     st.write("🧾 Average Characteristics by Cluster:")
-    st.dataframe(cluster_summary)
+    #st.dataframe(cluster_summary)
 
     # Cluster Profile Summary
-    st.subheader("🧾 Cluster Profile Summary")
+    #st.subheader("🧾 Cluster Profile Summary")
     cluster_summary = original_df.groupby('Cluster')[['age', 'amount', 'Risk Score (0-1)']].mean()
     cluster_summary['Count'] = original_df.groupby('Cluster').size()
     st.dataframe(cluster_summary.style.highlight_max(axis=0))
