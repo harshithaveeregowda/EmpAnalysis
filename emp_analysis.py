@@ -142,49 +142,49 @@ if uploaded_file:
         sick_ftes = df.groupby(['fte', 'sick_on_mon_more_six']).size().unstack(fill_value=0)
         st.dataframe(sick_ftes)
 
-    st.subheader("🔍 Top 5 Employees with Highest Education Hours")
-    st.dataframe(df.sort_values(by="education_hours_per_year", ascending=False).head(5))
+    #st.subheader("🔍 Top 5 Employees with Highest Education Hours")
+    #st.dataframe(df.sort_values(by="education_hours_per_year", ascending=False).head(5))
 
-    st.subheader("🔍 Top 5 Employees with Lowest Education Hours")
-    st.dataframe(df.sort_values(by="education_hours_per_year", ascending=True).head(5))
+    #st.subheader("🔍 Top 5 Employees with Lowest Education Hours")
+    #st.dataframe(df.sort_values(by="education_hours_per_year", ascending=True).head(5))
 
-    st.subheader("🏙️ Grade Distribution by City Type")
+    #st.subheader("🏙️ Grade Distribution by City Type")
     city_grade_counts = df.groupby(['city_type', 'grade']).size().unstack(fill_value=0)
-    st.dataframe(city_grade_counts)
+    #st.dataframe(city_grade_counts)
 
-    st.subheader("👶👴 Youngest and Oldest Employee in Each Grade")
+    #st.subheader("👶👴 Youngest and Oldest Employee in Each Grade")
     youngest = df.loc[df.groupby("grade")["age"].idxmin()]
     oldest = df.loc[df.groupby("grade")["age"].idxmax()]
 
-    st.markdown("**Youngest by Grade**")
-    st.dataframe(youngest)
+    #st.markdown("**Youngest by Grade**")
+    #st.dataframe(youngest)
 
-    st.markdown("**Oldest by Grade**")
-    st.dataframe(oldest)
+    #st.markdown("**Oldest by Grade**")
+    #st.dataframe(oldest)
 
-    st.subheader("📊 Average Age by Grade")
+    #st.subheader("📊 Average Age by Grade")
     avg_age = df.groupby("grade")["age"].mean().reset_index().rename(columns={"age": "average_age"})
-    st.dataframe(avg_age)
+    #st.dataframe(avg_age)
 
-    st.subheader("⏳ Top 5 Employees with Highest Time Employed")
-    st.dataframe(df.sort_values(by="time_employed", ascending=False).head(5))
+    #st.subheader("⏳ Top 5 Employees with Highest Time Employed")
+    #st.dataframe(df.sort_values(by="time_employed", ascending=False).head(5))
 
-    st.subheader("⏱️ Top 5 Employees with Lowest Time Employed")
-    st.dataframe(df.sort_values(by="time_employed", ascending=True).head(5))
+    #st.subheader("⏱️ Top 5 Employees with Lowest Time Employed")
+    #st.dataframe(df.sort_values(by="time_employed", ascending=True).head(5))
 
-    st.subheader("💰 Top 5 Employees with Highest Amount")
-    st.dataframe(df.sort_values(by="amount", ascending=False).head(5))
+    #st.subheader("💰 Top 5 Employees with Highest Amount")
+    #st.dataframe(df.sort_values(by="amount", ascending=False).head(5))
 
-    st.subheader("💸 Top 5 Employees with Lowest Amount")
-    st.dataframe(df.sort_values(by="amount", ascending=True).head(5))
+    #st.subheader("💸 Top 5 Employees with Lowest Amount")
+    #st.dataframe(df.sort_values(by="amount", ascending=True).head(5))
 
-    st.subheader("🤒 Employee with Maximum Total Sick Days Per Year")
+    #st.subheader("🤒 Employee with Maximum Total Sick Days Per Year")
     max_sick = df[df["total_sick_days_per_year"] == df["total_sick_days_per_year"].max()]
-    st.dataframe(max_sick)
+    #st.dataframe(max_sick)
 
-    st.subheader("💪 Employee with Minimum Total Sick Days Per Year")
+    #st.subheader("💪 Employee with Minimum Total Sick Days Per Year")
     min_sick = df[df["total_sick_days_per_year"] == df["total_sick_days_per_year"].min()]
-    st.dataframe(min_sick)
+    #st.dataframe(min_sick)
 
     ### EDUCATION HOURS ###
     st.header("🎓 Education Hours Analysis")
