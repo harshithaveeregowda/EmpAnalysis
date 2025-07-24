@@ -5,3 +5,5 @@ matplotlib
 seaborn
 plotly
 openpyxl
+python-dotenv
+requests
