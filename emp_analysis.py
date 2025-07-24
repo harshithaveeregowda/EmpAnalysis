@@ -60,7 +60,7 @@ if uploaded_file:
             prompt = (
             f"Our KPIs are:\n"
             f"- €{df}\n"
-            "Please provide 3 concise, prioritized marketing tips to increase revenue and engagement."
+            "Please provide 3 concise, prioritized tips to decrease sick leaves and improve employee engagement."
             )
             headers = {
                 "Authorization": f"Bearer {CLAUDE_TOKEN}",
