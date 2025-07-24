@@ -20,6 +20,30 @@ DATABRICKS_SERVER = os.getenv("DATABRICKS_SERVER_HOSTNAME")
 DATABRICKS_PATH   = os.getenv("DATABRICKS_HTTP_PATH")
 DATABRICKS_TOKEN  = os.getenv("DATABRICKS_ACCESS_TOKEN")
 
+def format_insights(raw: str) -> str:
+    """
+    - Finds the first line starting with '#' and uses it as the markdown H2 title.
+    - Converts the remaining lines into bullet points.
+    - Falls back to "🔍 Insights" if no heading is present.
+    """
+    lines = [l.rstrip() for l in raw.splitlines() if l.strip()]
+    title = "🔍 Insights"
+    bullets = []
+
+    for line in lines:
+        if line.startswith("#"):
+            # strip leading '#' and whitespace
+            title = line.lstrip("#").strip()
+        else:
+            # clean up numbering and extra spaces
+            txt = line.lstrip("0123456789. ").strip()
+            bullets.append(f"- {txt}")
+
+    # build the final markdown
+    md = [f"## {title}", ""]
+    md += bullets
+    return "\n".join(md)
+    
 # Title
 st.title("Employee Sick Leave Risk Prediction + Behavior Clustering")
 
