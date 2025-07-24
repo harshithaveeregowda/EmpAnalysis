@@ -8,6 +8,18 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import os
+from dotenv import load_dotenv
+import requests
+
+# Load environment variables
+load_dotenv()
+CLAUDE_URL   = os.getenv("CLAUDE_ENDPOINT_URL")
+CLAUDE_TOKEN = os.getenv("CLAUDE_BEARER_TOKEN")
+DATABRICKS_SERVER = os.getenv("DATABRICKS_SERVER_HOSTNAME")
+DATABRICKS_PATH   = os.getenv("DATABRICKS_HTTP_PATH")
+DATABRICKS_TOKEN  = os.getenv("DATABRICKS_ACCESS_TOKEN")
+
 # Title
 st.title("Employee Sick Leave Risk Prediction + Behavior Clustering")
 
@@ -18,6 +30,33 @@ if uploaded_file:
     # Load data
     df = pd.read_excel(uploaded_file) if uploaded_file.name.endswith(".xlsx") else pd.read_csv(uploaded_file)
 
+    # AI tips in an expander
+    with st.expander("🔍 Automated Tips", expanded=True):
+        if st.button("Generate General Tips", key="gen_tips_btn"):
+            prompt = (
+            f"Our KPIs are:\n"
+            f"- €{df}\n"
+            "Please provide 3 concise, prioritized marketing tips to increase revenue and engagement."
+            )
+            headers = {
+                "Authorization": f"Bearer {CLAUDE_TOKEN}",
+                "Content-Type": "application/json"
+            }
+            body = {"messages": [{"role": "user", "content": prompt}]}
+
+            with st.spinner("Generating tips…"):
+                r = requests.post(CLAUDE_URL, json=body, headers=headers, timeout=120)
+                if r.status_code != 200:
+                    st.error(f"Invocation failed with status {r.status_code}")
+                    st.code(r.text, language="json")
+                    st.stop()
+                raw = r.json()["choices"][0]["message"]["content"]
+
+        # Format and render
+            pretty = format_insights(raw)
+            st.markdown(pretty)
+
+    #----------------------------------------------------------------
     # Encode target
     df['sick_on_mon_more_six'] = df['sick_on_mon_more_six'].map({'yes': 1, 'no': 0})
 
