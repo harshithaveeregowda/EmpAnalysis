@@ -48,7 +48,7 @@ def format_insights(raw: str) -> str:
 st.title("Employee Sick Leave Risk Prediction + Behavior Clustering")
         
 # File Upload
-uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
+uploaded_file = st.sidebar.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
         
 if uploaded_file:
     # Load data
