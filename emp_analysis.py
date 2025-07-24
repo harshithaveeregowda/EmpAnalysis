@@ -49,17 +49,13 @@ st.title("Employee Sick Leave Risk Prediction + Behavior Clustering")
 
 tabs = st.tabs(["Insights", "Ask your Data"])
 
-# File Upload
-uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
-    
-if uploaded_file:
-    # Load data
-    df = pd.read_excel(uploaded_file) if uploaded_file.name.endswith(".xlsx") else pd.read_csv(uploaded_file)
-
     # --- Tab 1: Insights ---
     with tabs[0]:
-    
-        
+        # File Upload
+        uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
+        if uploaded_file:
+            # Load data
+            df = pd.read_excel(uploaded_file) if uploaded_file.name.endswith(".xlsx") else pd.read_csv(uploaded_file)
 
         # AI tips in an expander
         with st.expander("🔍 Automated Tips", expanded=True):
