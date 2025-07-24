@@ -46,6 +46,7 @@ def format_insights(raw: str) -> str:
     
 # Title
 st.title("Employee Sick Leave Risk Prediction + Behavior Clustering")
+st.set_page_config(page_title="Employee Sick Leave Analysis", layout="wide")
 
 tabs = st.tabs(["Insights", "Ask your Data"])
 
